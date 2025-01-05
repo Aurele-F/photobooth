@@ -98,6 +98,8 @@ qpicamera2.showFullScreen()
 #camera.start_preview(Preview.DRM)
 camera.start()
 
+app.exec()
+
 # Numérotation des photos
 frame = 1
 
