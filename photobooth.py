@@ -94,7 +94,7 @@ qpicamera2 = QGlPicamera2(camera, width=640, height=480, keep_ar=False)
 qpicamera2.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 qpicamera2.showFullScreen()
 
-camera.start_preview(Preview.QTGL)
+#camera.start_preview(Preview.QTGL)
 #camera.start_preview(Preview.DRM)
 camera.start()
 
