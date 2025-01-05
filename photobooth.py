@@ -16,6 +16,10 @@ import time
 import os
 from PIL import Image, ImageTk
 
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QApplication
+from picamera2.previews.qt import QGlPicamera2
+
 #Dialogue selection du répertoire
 
 root_img_dir = "/home/pi/Documents/photobooth/img/" + time.strftime("%Y-%m-%d_%Hh%M")
@@ -81,6 +85,15 @@ still_config = camera.create_still_configuration(main={"size": (4608, 2592)}, tr
 
 # Démarrage caméra
 camera.configure(preview_config)
+
+# Créer l'application Qt
+app = QApplication([])
+
+# Créer la fenêtre de prévisualisation sans bordure
+qpicamera2 = QGlPicamera2(picam2, width=640, height=480, keep_ar=False)
+qpicamera2.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+qpicamera2.showFullScreen()
+
 camera.start_preview(Preview.QTGL)
 #camera.start_preview(Preview.DRM)
 camera.start()
@@ -96,6 +109,7 @@ while True:
     # gestion de l'arrêt par appui sur le bouton dédié
     if GPIO.event_detected(STOP_BUTTON):
         camera.stop_preview()
+        qpicamera2.close()
         camera.close()
         GPIO.cleanup()
         print("Photobooth interrompu")
