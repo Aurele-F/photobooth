@@ -77,7 +77,7 @@ GPIO.setup(GREEN_LED, GPIO.OUT)
 
 # Config caméra
 camera = Picamera2()
-preview_config = camera.create_preview_configuration(main={"size": (640, 480)}, transform=Transform(vflip=1))
+preview_config = camera.create_preview_configuration(main={"size": (854, 480)}, transform=Transform(vflip=1))
 #preview_config = camera.create_preview_configuration(main={"size": (1920, 1080)}, transform=Transform(vflip=1))
 #still_config = camera.create_still_configuration(main={"size": (1920, 1080)}, transform=Transform(hflip=1, vflip=1))
 #still_config = camera.create_still_configuration(main={"size": (3840, 1920)}, transform=Transform(hflip=1, vflip=1))
@@ -90,7 +90,7 @@ camera.configure(preview_config)
 app = QApplication([])
 
 # Créer la fenêtre de prévisualisation sans bordure
-qpicamera2 = QGlPicamera2(camera, width=640, height=480, keep_ar=False)
+qpicamera2 = QGlPicamera2(camera, width=854, height=480, keep_ar=False)
 qpicamera2.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 qpicamera2.showFullScreen()
 
