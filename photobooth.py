@@ -90,7 +90,7 @@ camera.configure(preview_config)
 app = QApplication([])
 
 # Créer la fenêtre de prévisualisation sans bordure
-qpicamera2 = QGlPicamera2(picam2, width=640, height=480, keep_ar=False)
+qpicamera2 = QGlPicamera2(camera, width=640, height=480, keep_ar=False)
 qpicamera2.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 qpicamera2.showFullScreen()
 
